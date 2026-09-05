@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    @apply bg-ivoire-100 dark:bg-forest-900 text-ink dark:text-ivoire-100 font-body antialiased transition-colors duration-200;
+    /* Empêche le "rebond" natif dans la WebView Capacitor */
+    overscroll-behavior: none;
+    background-image:
+      radial-gradient(circle at 8% 0%, rgba(245, 144, 30, 0.07), transparent 32%),
+      radial-gradient(circle at 92% 18%, rgba(11, 61, 36, 0.06), transparent 38%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-forest-800 dark:text-ivoire-50;
+  }
+
+  a {
+    -webkit-touch-callout: none;
+  }
+
+  /* Zones tactiles confortables sur mobile */
+  button, .tap-target {
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    @apply bg-savane-200 text-forest-800;
+  }
+}
+
+/* =========================================================
+   MODE SOMBRE — couverture globale
+   =========================================================
+   Plutôt que de modifier chaque page une par une, ces règles
+   redéfinissent directement les classes de couleur utilisées dans le
+   site (fond, texte, bordures) dès que la classe "dark" est active sur
+   <html>. Couleurs écrites en valeurs directes (pas de @apply) pour
+   éviter tout risque de dépendance circulaire avec le moteur Tailwind.
+
+   Mise à jour : la version précédente ne couvrait qu'une dizaine de
+   classes (bg-white, text-forest-800/700/600/500...). Beaucoup de
+   classes réellement utilisées dans les pages (variantes d'opacité
+   type text-forest-700/80, text-forest-400, text-forest-300, bordures,
+   rouges d'erreur, etc.) n'étaient pas couvertes : le texte restait
+   d'une couleur foncée pensée pour un fond clair, devenant illisible
+   une fois le fond passé en vert profond. Cette liste a été étendue en
+   listant tous les utilitaires de couleur réellement présents dans
+   pages/ + components/ + layouts/. */
+
+/* --- Fonds --- */
+.dark .bg-white { background-color: #0B3D24; }
+.dark .bg-white\/95 { background-color: rgba(11, 61, 36, 0.95); }
+.dark .card,
+.dark .card-hover { background-color: #0B3D24; border-color: #0F3A21; }
+.dark .bg-ivoire-100 { background-color: #082A18; }
+.dark .bg-ivoire-100\/45,
+.dark .bg-ivoire-100\/90 { background-color: rgba(8, 42, 24, 0.9); }
+.dark .bg-ivoire-200 { background-color: #0B3D24; }
+.dark .bg-forest-50 { background-color: rgba(15, 58, 33, 0.5); }
+.dark .bg-forest-50\/50 { background-color: rgba(15, 58, 33, 0.35); }
+.dark .bg-forest-100 { background-color: rgba(15, 58, 33, 0.7); }
+.dark .bg-savane-50 { background-color: rgba(95, 51, 7, 0.3); }
+.dark .bg-red-50 { background-color: rgba(127, 29, 29, 0.25); }
+
+/* --- Textes --- */
+.dark .text-ink { color: #FBF8F2; }
+.dark .text-forest-800 { color: #FFFDF9; }
+.dark .text-forest-700,
+.dark .text-forest-700\/70,
+.dark .text-forest-700\/75,
+.dark .text-forest-700\/80 { color: #CBE3D1; }
+.dark .text-forest-600 { color: #98C7A5; }
+.dark .text-forest-500 { color: #5FA574; }
+.dark .text-forest-400 { color: #8FBE9C; }
+.dark .text-forest-300 { color: #6F9C7C; }
+.dark .text-savane-600,
+.dark .text-savane-700,
+.dark .text-savane-800 { color: #FDB44B; }
+.dark .text-savane-300,
+.dark .text-savane-400,
+.dark .text-savane-500 { color: #FB9F27; }
+.dark .text-red-600,
+.dark .text-red-500 { color: #F87171; }
+.dark .text-red-300 { color: #FCA5A5; }
+
+/* --- Bordures / séparateurs --- */
+.dark .border-forest-50,
+.dark .border-forest-100 { border-color: #0F3A21; }
+.dark .border-forest-200 { border-color: #164A2A; }
+.dark .border-forest-800 { border-color: #F3EEE2; }
+.dark .divide-forest-50 > :not([hidden]) ~ :not([hidden]) { border-color: #0F3A21; }
+.dark .divide-x.divide-forest-50 > :not([hidden]) ~ :not([hidden]) { border-color: #0F3A21; }
+
+/* --- Éléments de formulaire --- */
+.dark .input-field { background-color: #082A18; border-color: #0F3A21; color: #FBF8F2; }
+.dark .input-field::placeholder { color: #5FA574; }
+.dark .label-field { color: #357E4E; }
+.dark input[type="checkbox"].border-forest-200 { background-color: #082A18; border-color: #357E4E; }
+
+/* --- Fonds dégradés décoratifs (hero, etc.) --- */
+.dark .bg-brand-gradient-soft {
+  background-image: linear-gradient(135deg, #0F3A21 0%, #0B3D24 45%, #082A18 100%);
+}
+
+/* --- Divers --- */
+.dark .eyebrow { color: #FB9F27; }
+.dark .btn-ghost:hover { background-color: rgba(15, 58, 33, 0.6); }
+.dark .shadow-card,
+.dark .shadow-card-hover,
+.dark .shadow-floating { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 12px 28px rgba(0, 0, 0, 0.35); }
+.dark ::selection { background-color: #164A2A; color: #FFFDF9; }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-display font-semibold text-sm sm:text-base transition-all duration-200 active:scale-[0.97] tap-target;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest-800 text-white shadow-card hover:bg-forest-700 hover:shadow-card-hover;
+  }
+
+  .btn-accent {
+    @apply btn bg-savane-500 text-white shadow-card hover:bg-savane-600 hover:shadow-card-hover;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white;
+  }
+
+  .btn-ghost {
+    @apply btn text-forest-800 hover:bg-forest-50;
+  }
+
+  .card {
+    @apply bg-white rounded-none shadow-card border border-forest-50/80 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover hover:-translate-y-0.5 hover:border-forest-100;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold tracking-wide;
+  }
+
+  .badge-green {
+    @apply badge bg-forest-50 text-forest-700;
+  }
+
+  .badge-orange {
+    @apply badge bg-savane-50 text-savane-700;
+  }
+
+  .eyebrow {
+    @apply text-xs font-display font-bold uppercase tracking-[0.14em] text-savane-600;
+  }
+
+  .section-divider {
+    @apply h-px w-16 bg-savane-500 rounded-full;
+  }
+
+  .input-field {
+    @apply w-full rounded-none border border-forest-100 bg-white px-4 py-3 text-[15px] text-ink placeholder:text-forest-300 focus:border-savane-500 focus:outline-none focus:ring-2 focus:ring-savane-100 transition-colors;
+  }
+
+  .label-field {
+    @apply block text-[11px] font-bold uppercase tracking-wide text-forest-500 mb-1.5;
+  }
+
+  .section {
+    @apply px-5 sm:px-8 lg:px-12 xl:px-20 2xl:px-28;
+  }
+
+  /* Plus large sur grand écran pour éviter un site qui paraît "petit et centré" */
+  .container-app {
+    @apply max-w-[1600px] mx-auto w-full;
+  }
+
+  /* Mise en page des écrans de connexion/inscription : une carte centrée,
+     largeur limitée même sur très grand écran (pas de plein écran étiré) —
+     panneau de marque à gauche, formulaire à droite. Une seule colonne sur
+     mobile pour ne pas surcharger le petit écran. */
+  .auth-split {
+    @apply min-h-screen flex items-center justify-center bg-ivoire-100 p-4 sm:p-6 lg:p-10;
+  }
+
+  .auth-card {
+    @apply w-full max-w-4xl grid lg:grid-cols-2 rounded-none overflow-hidden shadow-floating bg-white my-6 lg:my-0;
+  }
+
+  .auth-brand {
+    @apply relative hidden lg:block overflow-hidden bg-forest-800;
+  }
+
+  .auth-brand-blob {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+  }
+  .auth-brand-blob-1 {
+    @apply w-96 h-96 -top-24 -right-24 bg-savane-500/20;
+  }
+  .auth-brand-blob-2 {
+    @apply w-80 h-80 -bottom-20 -left-16 bg-forest-400/20;
+  }
+
+  .auth-form-panel {
+    @apply flex items-center justify-center px-6 py-8 sm:py-10 bg-white;
+  }
+}
