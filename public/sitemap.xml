@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RETROUVA — sitemap.xml
+  Remplacez [DOMAINE] par le nom de domaine réel une fois le site en ligne.
+  Ce fichier est statique (le site est généré en mode SPA — voir
+  nuxt.config.js "ssr: false") : pensez à le mettre à jour si vous ajoutez
+  de nouvelles pages publiques importantes pour le référencement.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://[DOMAINE]/</loc><priority>1.0</priority></url>
+  <url><loc>https://[DOMAINE]/comment-ca-marche</loc><priority>0.8</priority></url>
+  <url><loc>https://[DOMAINE]/resultats</loc><priority>0.8</priority></url>
+  <url><loc>https://[DOMAINE]/declarer</loc><priority>0.8</priority></url>
+  <url><loc>https://[DOMAINE]/perdu</loc><priority>0.7</priority></url>
+  <url><loc>https://[DOMAINE]/trouve</loc><priority>0.7</priority></url>
+  <url><loc>https://[DOMAINE]/points-relais</loc><priority>0.6</priority></url>
+  <url><loc>https://[DOMAINE]/evenements</loc><priority>0.6</priority></url>
+  <url><loc>https://[DOMAINE]/securite</loc><priority>0.5</priority></url>
+  <url><loc>https://[DOMAINE]/faq</loc><priority>0.5</priority></url>
+  <url><loc>https://[DOMAINE]/don</loc><priority>0.5</priority></url>
+  <url><loc>https://[DOMAINE]/carte</loc><priority>0.5</priority></url>
+  <url><loc>https://[DOMAINE]/connexion</loc><priority>0.3</priority></url>
+  <url><loc>https://[DOMAINE]/inscription</loc><priority>0.3</priority></url>
+  <url><loc>https://[DOMAINE]/mentions-legales</loc><priority>0.2</priority></url>
+  <url><loc>https://[DOMAINE]/conditions-utilisation</loc><priority>0.2</priority></url>
+  <url><loc>https://[DOMAINE]/politique-de-confidentialite</loc><priority>0.2</priority></url>
+  <url><loc>https://[DOMAINE]/cookies</loc><priority>0.2</priority></url>
+</urlset>

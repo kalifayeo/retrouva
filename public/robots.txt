@@ -1,0 +1,17 @@
+# RETROUVA — robots.txt
+# Remplacez [DOMAINE] par le nom de domaine réel une fois le site en ligne
+# (ex. https://retrouva.ci ou https://retrouva.vercel.app).
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /agent-relais
+Disallow: /partenaire
+Disallow: /dashboard
+Disallow: /profil
+Disallow: /messagerie
+Disallow: /notifications
+Disallow: /mes-objets-trouves
+Disallow: /mes-recherches
+
+Sitemap: https://[DOMAINE]/sitemap.xml
